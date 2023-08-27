@@ -1,0 +1,13 @@
+.action_button{
+    border-radius: 3px;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    border: 1px solid transparent;
+    background-color: #3c8dbc;
+    border-color: #367fa9;
+    color: #fff;
+}
+.table_title_color{
+    background-color: #3C8DBC;
+    color: white;
+}

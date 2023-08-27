@@ -1,0 +1,58 @@
+<!-- Modal -->
+<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header action_button text-white">
+        <h6 class="modal-title" id="editLabel"><i class="fa fa-edit"> </i> Edit Flavor</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Model Body  -->
+
+      <div class="modal-body">
+      
+    
+          
+<div class="form-row mt-4">
+
+<div class="col">
+<div class="mb-3">
+  <label for="number" class="form-label text-black h6 text-left">Flavor Name</label>  
+  <input type="text" name="name" id="edit_name" class="form-control" id="name" aria-describedby="PriceHelp" placeholder="Flavor Name">
+  
+</div>
+</div>
+
+
+
+
+
+  <div class="mb-3">
+  <label for="slider_image" class="form-label text-black h6">Status</label>
+  <select class="form-select custom-select" aria-label="Default select example" name="status" id="editstatus" >
+    <option>Select Status</option>
+    <option value="Active">Active</option>
+    <option value="Inactive">Inactive</option>
+   
+  </select>
+</div>
+
+
+
+</div>
+
+
+      <!-- Model Footer  -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Edit Flavor</button>
+      </div>
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>

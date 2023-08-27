@@ -1,0 +1,164 @@
+ @php
+    $i=1;
+@endphp
+
+@foreach ($infos as $info)
+    
+
+    <tr>
+      <th class="text-center">{{$i++}}</th>
+      <th class="text-center">{{$info->name}}</th>
+      <td class="text-center">
+@if ($info->status === 'Active')
+<span class="badge bg-success"> {{$info->status}} </span>
+@endif
+
+@if ($info->status === 'Inactive')
+<span class="badge bg-danger"> {{$info->status}} </span>
+@endif
+
+
+      </td>
+      <td class="text-center">
+        <a class="text-center" href="{{route('admin.flavor.change_sts', $info->id)}}"><i class="fas fa-exchange-alt d-block"></i></a>
+      </td>
+      <td>
+
+        <div class="d-flex flex-wrap justify-content-center">
+
+
+ 
+   {{-- Model For Edit  --}}
+
+<!-- Button trigger modal -->
+
+
+
+
+<button type="button" class="btn btn-primary m-1" data-bs-toggle="modal" data-bs-target="#edit" 
+>
+<i class="far fa-edit"></i> 
+</button>
+
+
+<!-- Modal -->
+<div class="modal fade" id="edit" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header action_button text-white">
+        <h6 class="modal-title" id="editLabel"><i class="fa fa-edit"> </i> Edit Flavor</h6>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <!-- Model Body  -->
+
+      <div class="modal-body">
+      
+        <form action="{{route('admin.flavor.update', $info->id)}}" method="post" enctype="multipart/form-data">
+          @method('put')
+          @csrf
+          
+<div class="form-row mt-4">
+
+<div class="col">
+<div class="mb-3">
+  <label for="number" class="form-label text-black h6 text-left">Flavor Name</label>  
+  <input type="text" name="name" value="{{$info->name}}" class="form-control" id="name" aria-describedby="PriceHelp" placeholder="Flavor Name">
+  
+</div>
+</div>
+
+
+
+
+
+  <div class="mb-3">
+  <label for="slider_image" class="form-label text-black h6">Status</label>
+  <select class="form-select custom-select" aria-label="Default select example" name="status" id="stock_status" >
+    <option>Select Status</option>
+    <option value="Active" {{$info->status === 'Active'? 'selected' : '' }}>Active</option>
+    <option value="Inactive" {{$info->status === 'Inactive'? 'selected' : '' }}>Inactive</option>
+   
+  </select>
+</div>
+
+
+
+</div>
+
+
+      <!-- Model Footer  -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-primary">Edit Flavor</button>
+      </div>
+ </form>
+      </div>
+
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+ {{-- Delete  --}}
+
+         
+
+         <form class="d-inline " onclick="return confirm('Sure to delete product ?')"  action="{{route('admin.flavor.delete',$info->id)}}" method="POST">
+          @csrf
+          @method('Delete')
+          <button type="submit" class="btn btn-danger m-1"><i class="far fa-trash-alt"></i></button>
+          </form>
+
+        </div>
+
+      </td>
+    </tr>
+
+    @endforeach
+
+
+
+
+
+      function alldata(){
+  
+  
+  $.ajax({
+      type:"GET",
+      dataType: 'json',
+      url:"http://localhost/restaurant_management/public/admin/flavor/alldata",
+      success:function(response){
+   
+        var data = "";
+
+        var i = 1;
+        console.log(response);
+
+        $.each(response, function(key, value){
+
+          // data = data+ "<tr>"
+
+          //   data = data + "<td>" i++ "</td>"
+          //   data = data + "<td>" value.name "</td>"
+          //   data = data + "<td>" value.status"</td>"
+          //   data = data + "<td>" value.id "</td>"
+
+          // data = data+ "</tr>"
+          console.log(value.name);
+        });
+
+
+
+  }
+  
+  
+  })
+  }
+  
+  alldata();
